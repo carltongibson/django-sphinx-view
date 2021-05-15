@@ -1,0 +1,11 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "sphinx_view"
+dist-name = "django-sphinx-view"
+author = "Carlton Gibson"
+author-email = "carlton.gibson@noumenal.es"
+home-page = "https://noumenal.es/django-sphinx-view/"
+
