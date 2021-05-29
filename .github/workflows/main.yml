@@ -33,6 +33,3 @@ jobs:
       - name: rsync files
         working-directory: ./docs
         run: rsync -a -e 'ssh -i ~/.ssh/id_rsa' ./build/json/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.RSYNC_TARGET_PATH }}
-      - name: Setup tmate session
-        if: ${{ failure() }}
-        uses: mxschmitt/action-tmate@v3
