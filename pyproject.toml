@@ -7,5 +7,5 @@ module = "sphinx_view"
 dist-name = "django-sphinx-view"
 author = "Carlton Gibson"
 author-email = "carlton.gibson@noumenal.es"
+description-file = "README.md"
 home-page = "https://noumenal.es/django-sphinx-view/"
-
