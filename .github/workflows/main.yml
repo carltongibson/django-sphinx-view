@@ -1,0 +1,35 @@
+name: Build & Upload
+
+on:
+  # Trigger on pushes to the main branch only.
+  # See #5 ref restricting to tags.
+  push:
+    branches: [ main ]
+
+  # Or run manually.
+  workflow_dispatch:
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install Sphinx myst-parser
+      - name: Build docs
+        run: make json
+        working-directory: ./docs
+      - name: Install SSH key
+        uses: carltongibson/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          name: id_rsa # optional
+          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
+      - name: rsync files
+        working-directory: ./docs
+        run: rsync -a -e 'ssh -i ~/.ssh/id_rsa' ./build/json/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.RSYNC_TARGET_PATH }}
