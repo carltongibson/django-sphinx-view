@@ -9,3 +9,6 @@ author = "Carlton Gibson"
 author-email = "carlton.gibson@noumenal.es"
 description-file = "README.md"
 home-page = "https://noumenal.es/django-sphinx-view/"
+
+[tool.flit.metadata.urls]
+GitHub = "https://github.com/carltongibson/django-sphinx-view"
