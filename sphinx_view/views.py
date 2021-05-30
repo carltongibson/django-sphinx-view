@@ -7,6 +7,8 @@ from django.views.generic.base import TemplateView
 
 class DocumentationView(TemplateView):
     json_build_dir: Path = None
+    base_template_name = "base.html"
+    template_name = "sphinx_view/page.html"
 
     def get_doc_json(self):
         path: str = self.kwargs["path"]
@@ -30,5 +32,6 @@ class DocumentationView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["base_template_name"] = self.base_template_name
         context["doc"] = self.get_doc_json()
         return context

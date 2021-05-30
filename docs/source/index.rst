@@ -18,7 +18,7 @@ Basic Usage
 Build your Sphinx docs with the ``JSONBuilder``, using ``make json``.
 
 Provide a ``sphinx_view/page.html`` template. This package will ship one in a later
-version.
+version. See `#7 <https://github.com/carltongibson/django-sphinx-view/issues/7>`_.
 
 Route a ``DocumentationView`` with a ``Path`` to the output json::
 
@@ -39,6 +39,9 @@ Route a ``DocumentationView`` with a ``Path`` to the output json::
         # ...
     ]
 
+The ``json_build_dir`` keyword argument is required. You may also set
+``template_name`` (default ``sphinx_view/page.html``) and
+``base_template_name`` (default ``base.html``) keyword arguments.
 
 Enjoy.
 
