@@ -1,8 +1,6 @@
 # django-sphinx-view
 Serve your Sphinx docs with Django.
 
-Current status: pre-alpha. You're far too early. 😀
-
 ## Basic Usage
 
 Build your Sphinx docs with the `JSONBuilder`, using `make json`.  

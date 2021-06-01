@@ -8,9 +8,6 @@ Welcome to django-sphinx-view's documentation!
 
 Serve your Sphinx docs with Django.
 
-🚧  Current status: pre-alpha. You're far too early. 😀
-
-
 
 Basic Usage
 -----------
