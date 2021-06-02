@@ -8,6 +8,24 @@ Welcome to django-sphinx-view's documentation!
 
 Serve your Sphinx docs with Django.
 
+Installation
+------------
+
+Install using ``pip``:
+
+.. code-block::
+
+    pip install django-sphinx-view
+
+Then add ``sphinx_view`` to ``INSTALLED_APPS`` for template discovery::
+
+   INSTALLED_APPS = [
+       ...
+       "sphinx_view",
+       ...
+   ]
+
+That's it. You're good to go.
 
 Basic Usage
 -----------
