@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to django-sphinx-view's documentation!
-==============================================
+django-sphinx-view
+==================
 
 Serve your Sphinx docs with Django.
 
@@ -32,10 +32,7 @@ Basic Usage
 
 Build your Sphinx docs with the ``JSONBuilder``, using ``make json``.
 
-Provide a ``sphinx_view/page.html`` template. This package will ship one in a later
-version. See `#7 <https://github.com/carltongibson/django-sphinx-view/issues/7>`_.
-
-Route a ``DocumentationView`` with a ``Path`` to the output json::
+Route a ``DocumentationView`` with a ``Path`` to the output JSON::
 
     from pathlib import Path
 
@@ -47,16 +44,23 @@ Route a ``DocumentationView`` with a ``Path`` to the output json::
         path(
             "docs<path:path>",
             DocumentationView.as_view(
-                json_build_dir=Path('/path/to/output/json')
+                json_build_dir=Path('/path/to/output/json'),
+                base_template_name="docs_base.html",
             ),
             name="documentation",
         ),
         # ...
     ]
 
-The ``json_build_dir`` keyword argument is required. You may also set
-``template_name`` (default ``sphinx_view/page.html``) and
-``base_template_name`` (default ``base.html``) keyword arguments.
+The ``json_build_dir`` keyword argument is required, providing the location of
+the rendered ouput JSON.
+
+The ``base_template_name`` (default ``base.html``) keyword argument allows you
+to provide a base template fitting your site's layout. It should provide
+``title``, ``doc``, and ``toc`` blocks.
+
+You may also set a ``template_name`` (default ``sphinx_view/page.html``)
+keyword arg to provide a custom template.
 
 Enjoy.
 
@@ -67,7 +71,7 @@ elements.
 Roadmap
 -------
 
-``django-sphinx-view`` has three goals and one non-goal.
+``django-sphinx-view`` has two goals and one non-goal.
 
 Goals:
 
@@ -78,11 +82,6 @@ Goals:
   HTML docs using ``make html`` and the ``HTMLBuilder``. This will complete the
   circle, so to speak, and allow building your docs to static HTML or if you
   don't have the Django development server available.
-* Provide a **doc page template** for the 80% case. My current development
-  template has too much of my site's markup in it. I need to move that towards
-  the base template, and then what's left should (in theory) be good for most
-  sites to use. It should be just the blocks containing the sections from the
-  JSON.
 
 The non-goal is to replace Sphinx themes in general. ``django-sphinx-view`` is
 about integrating Sphinx build docs into your Django site. You bring the

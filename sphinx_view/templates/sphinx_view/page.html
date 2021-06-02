@@ -1,0 +1,11 @@
+{% extends base_template_name %}
+
+{% block title %}{{ doc.title }}{% endblock title %}
+
+{% block doc %}
+{{ doc.body|safe }}
+{% endblock doc %}
+
+{% block toc %}
+{{ doc.toc|safe }}
+{% endblock toc %}
