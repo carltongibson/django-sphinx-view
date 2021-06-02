@@ -46,8 +46,29 @@ You can subclass ``DocumentationView`` to require authentication and so add
 access control, and so on. You can customise the template to add other dynamic
 elements.
 
+Roadmap
+-------
 
+``django-sphinx-view`` has three goals and one non-goal.
 
+Goals:
+
+* The key ``DocumentationView`` **view**  class to serve the rendered JSON
+  files. Initial version is in place. I imagine small API adjustments going
+  forwards but little else.
+* A Sphinx **template bridge** that will allow using the DTL when rendering the
+  HTML docs using ``make html`` and the ``HTMLBuilder``. This will complete the
+  circle, so to speak, and allow building your docs to static HTML or if you
+  don't have the Django development server available.
+* Provide a **doc page template** for the 80% case. My current development
+  template has too much of my site's markup in it. I need to move that towards
+  the base template, and then what's left should (in theory) be good for most
+  sites to use. It should be just the blocks containing the sections from the
+  JSON.
+
+The non-goal is to replace Sphinx themes in general. ``django-sphinx-view`` is
+about integrating Sphinx build docs into your Django site. You bring the
+styling, you bring the theme.
 
 .. toctree::
    :maxdepth: 2
