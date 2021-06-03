@@ -84,7 +84,7 @@ Goals:
   don't have the Django development server available.
 
 The non-goal is to replace Sphinx themes in general. ``django-sphinx-view`` is
-about integrating Sphinx build docs into your Django site. You bring the
+about integrating Sphinx built docs into your Django site. You bring the
 styling, you bring the theme.
 
 .. toctree::
