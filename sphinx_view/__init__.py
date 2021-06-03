@@ -2,7 +2,7 @@
 from .views import DocumentationView
 
 
-__version__ = '21.1a4'
+__version__ = '21.1a5'
 
 __all__ = [
     "__version__",
