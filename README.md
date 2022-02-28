@@ -6,4 +6,11 @@ Please see [the project homepage for docs][homepage].
 
 [homepage]: https://noumenal.es/django-sphinx-view/
 
-TODO: Add contributing docs here. 
+
+## Contributing
+
+All input welcome! ⛵️
+
+* Check out [the issues](https://github.com/carltongibson/django-sphinx-view/issues)
+* Start a [Discussion with your idea](https://github.com/carltongibson/django-sphinx-view/discussions).
+
