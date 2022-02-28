@@ -27,10 +27,22 @@ Then add ``sphinx_view`` to ``INSTALLED_APPS`` for template discovery::
 
 That's it. You're good to go.
 
+Optionally, you can add ``"sphinx_view"`` to your ``extensions`` in Sphinx's
+``conf.py``::
+
+    extensions = [
+        ...
+        "sphinx_view",
+    ]
+
+This will enable a custom JSON builder that makes the global TOC available on
+each page. (If you don't add the `sphinx_view` extension, the default JSON
+builder will be used.)
+
 Basic Usage
 -----------
 
-Build your Sphinx docs with the ``JSONBuilder``, using ``make json``.
+Build your Sphinx docs with the JSON builder, using ``make json``.
 
 Route a ``DocumentationView`` with a ``Path`` to the output JSON::
 
@@ -61,6 +73,24 @@ to provide a base template fitting your site's layout. It should provide
 
 You may also set a ``template_name`` (default ``sphinx_view/page.html``)
 keyword arg to provide a custom template.
+
+The page template receives a context with ``base_template_name`` and ``doc``
+keys.
+
+The ``doc`` has these properties:
+
+* ``title``
+* ``body``
+* ``toc`` - the page contents
+* ``toctree`` - the global table of contents
+
+The ``body``, ``toc``, and ``toctree`` elements are rendered HTML and should be
+output using the ``safe`` filter::
+
+    # In sphinx_view/page.html
+    {% block doc %}
+    {{ doc.body|safe }}
+    {% endblock doc %}
 
 Enjoy.
 
