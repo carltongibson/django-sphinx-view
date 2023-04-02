@@ -9,6 +9,5 @@ class SphinxViewBuilder(JSONHTMLBuilder):
     def get_doc_context(self, docname, body, metatags):
         doc = super().get_doc_context(docname, body, metatags)
         self_toctree = TocTree(self.env).get_toctree_for(docname, self, True)
-        toctree = self.render_partial(self_toctree)['fragment']
-        doc['toctree'] = toctree
+        doc['toctree'] = lambda **kwargs: self.render_partial(self_toctree)['fragment']
         return doc
