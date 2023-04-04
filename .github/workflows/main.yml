@@ -1,4 +1,4 @@
-name: Build & Upload
+name: Build Docs
 
 on:
   # Trigger on pushes to the main branch only.
@@ -25,12 +25,3 @@ jobs:
       - name: Build docs
         run: make json
         working-directory: ./docs
-      - name: Install SSH key
-        uses: carltongibson/ssh-key-action@v2
-        with:
-          key: ${{ secrets.SSH_KEY }}
-          name: id_rsa # optional
-          known_hosts: ${{ secrets.SSH_KNOWN_HOSTS }}
-      - name: rsync files
-        working-directory: ./docs
-        run: rsync -a -e 'ssh -i ~/.ssh/id_rsa' ./build/json/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.RSYNC_TARGET_PATH }}
