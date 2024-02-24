@@ -25,3 +25,10 @@ jobs:
       - name: Build docs
         run: make json
         working-directory: ./docs
+      # Refs #22: Upload an artifact containing the built docs.
+      - name: Upload docs
+        uses: actions/upload-artifact@v2
+        with:
+          # Use a name from the commit hash to avoid collisions.
+          name: docs-${{ github.sha }}
+          path: docs/_build/json
