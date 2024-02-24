@@ -25,3 +25,18 @@ jobs:
       - name: Build docs
         run: make json
         working-directory: ./docs
+      # Refs #22: Upload an artifact containing the built docs.
+      - name: Upload docs
+        id: artifact-upload-step
+        uses: actions/upload-artifact@v2
+        with:
+          # Use a name from the commit hash to avoid collisions.
+          name: docs-${{ github.sha }}
+          path: docs/build/json
+# TODO: This step not working even though the example is straight from the docs.
+#      - name: Get artifact details
+#        run: |
+#          echo "Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}" >> $GITHUB_STEP_SUMMARY
+#          echo "Artifact URL is ${{ steps.artifact-upload-step.outputs.artifact-url }}" >> $GITHUB_STEP_SUMMARY
+#          # https://github.com/actions/upload-artifact?tab=readme-ov-file#example-output-between-steps
+#          echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}' >> $GITHUB_STEP_SUMMARY
