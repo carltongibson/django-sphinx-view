@@ -33,7 +33,10 @@ jobs:
           # Use a name from the commit hash to avoid collisions.
           name: docs-${{ github.sha }}
           path: docs/build/json
-      - name: Get artifact details
-        run: |
-          echo "Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}" >> $GITHUB_STEP_SUMMARY
-          echo "Artifact URL is ${{ steps.artifact-upload-step.outputs.artifact-url }}" >> $GITHUB_STEP_SUMMARY
+# TODO: This step not working even though the example is straight from the docs.
+#      - name: Get artifact details
+#        run: |
+#          echo "Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}" >> $GITHUB_STEP_SUMMARY
+#          echo "Artifact URL is ${{ steps.artifact-upload-step.outputs.artifact-url }}" >> $GITHUB_STEP_SUMMARY
+#          # https://github.com/actions/upload-artifact?tab=readme-ov-file#example-output-between-steps
+#          echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}' >> $GITHUB_STEP_SUMMARY
