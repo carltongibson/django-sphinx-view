@@ -27,18 +27,14 @@ jobs:
         working-directory: ./docs
       # Refs #22: Upload an artifact containing the built docs.
       - name: Upload docs
+        id: artifact-upload-step
         uses: actions/upload-artifact@v2
         with:
           # Use a name from the commit hash to avoid collisions.
           name: docs-${{ github.sha }}
           path: docs/build/json
       - name: Get artifact details
-        uses: actions/github-script@v5
-        with:
-          script: |
-            const artifactName = "${{ steps.upload-docs.outputs.name }}"
-            const artifactSize = "${{ steps.upload-docs.outputs.size }}"
-            const artifactDownloadUrl = "${{ steps.upload-docs.outputs.artifact-url }}"
-            console.log(`Artifact Name: ${artifactName}`)
-            console.log(`Artifact Size: ${artifactSize}`)
-            console.log(`Artifact Download URL: ${artifactDownloadUrl}`)          
+        run:
+          echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}' >> $GITHUB_STEP_SUMMARY
+          echo 'Artifact Name is ${{ steps.artifact-upload-step.outputs.artifact-name }}' >> $GITHUB_STEP_SUMMARY
+          echo 'Artifact URL is ${{ steps.artifact-upload-step.outputs.artifact-url }}' >> $GITHUB_STEP_SUMMARY
