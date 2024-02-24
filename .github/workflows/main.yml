@@ -31,4 +31,4 @@ jobs:
         with:
           # Use a name from the commit hash to avoid collisions.
           name: docs-${{ github.sha }}
-          path: docs/_build/json
+          path: docs/build/json
