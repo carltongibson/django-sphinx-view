@@ -35,5 +35,5 @@ jobs:
           path: docs/build/json
       - name: Get artifact details
         run: |
-          echo 'Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}' >> $GITHUB_STEP_SUMMARY
-          echo 'Artifact URL is ${{ steps.artifact-upload-step.outputs.artifact-url }}' >> $GITHUB_STEP_SUMMARY
+          echo "Artifact ID is ${{ steps.artifact-upload-step.outputs.artifact-id }}" >> $GITHUB_STEP_SUMMARY
+          echo "Artifact URL is ${{ steps.artifact-upload-step.outputs.artifact-url }}" >> $GITHUB_STEP_SUMMARY
