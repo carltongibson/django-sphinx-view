@@ -32,3 +32,13 @@ jobs:
           # Use a name from the commit hash to avoid collisions.
           name: docs-${{ github.sha }}
           path: docs/build/json
+      - name: Get artifact details
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const artifactName = "${{ steps.upload-docs.outputs.name }}"
+            const artifactSize = "${{ steps.upload-docs.outputs.size }}"
+            const artifactDownloadUrl = "${{ steps.upload-docs.outputs.artifact-url }}"
+            console.log(`Artifact Name: ${artifactName}`)
+            console.log(`Artifact Size: ${artifactSize}`)
+            console.log(`Artifact Download URL: ${artifactDownloadUrl}`)          
