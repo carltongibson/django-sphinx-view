@@ -3,7 +3,7 @@ from .builders import SphinxViewBuilder
 from .views import DocumentationView
 
 
-__version__ = '23.1a7'
+__version__ = '26.1'
 
 __all__ = [
     "__version__",
